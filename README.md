@@ -34,6 +34,9 @@ Currently supports following fieldtypes:
  - wysiwyg
 
 version history:
-v1.0			image and gallery field support
+
+v1.1		added image-size on image fields, tweaked the code, changed way to test for acf 4/5, fixed save_format/return_format for acf 4/5, added textdomain and .pot file
+
+v1.0		image and gallery field support
 
 > Written with [StackEdit](https://stackedit.io/).

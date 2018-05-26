@@ -1,12 +1,21 @@
 <?php
 /**
- * Plugin Name: Easy ACF Connect for Themer
- * Plugin URI: https://www.beaverplugins.com
- * Description: Easy ACF Connect for Beaver Themer. Just select the fieldname to connect.
- * Version: 1.0
- * Author: Didou Schol
- * Author URI: https://www.beaverplugins.com
+ Plugin Name: Easy ACF Connect for Themer
+ Plugin URI: https://www.beaverplugins.com
+ Description: Easy ACF Connect for Beaver Themer. Just select the fieldname to connect.
+ Version: 1.1
+ Author: Didou Schol
+ Text Domain: easy-acf-connect
+ Domain Path: /languages
+ Author URI: https://www.beaverplugins.com
  */
+
+add_action( 'plugins_loaded', 'easy_acf_setup_textdomain' );
+
+function easy_acf_setup_textdomain(){
+	//textdomain
+	load_plugin_textdomain( 'easy-acf-connect', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+}
 
 add_action( 'init' , 'easy_acf_connect::init', 99, 1 );
 
@@ -47,10 +56,20 @@ class easy_acf_connect {
 		'field'
 	);
 
+	public static $rf = '';
+
 	public static function init() {
 
-		// return early if acf_pro doesn't exist
-		if (! class_exists('acf_pro') && !class_exists('acf') ) return false;
+		if ( !class_exists( 'ACF' ) && !class_exists( 'acf' ) ) {
+			add_action( 'admin_notices' , __CLASS__ . '::easy_acf_admin_error_need_acf' );
+			return false;
+		}
+
+		if ( defined( 'ACF_VERSION') && version_compare( ACF_VERSION , '5.0.0' , '>=' ) ) {
+			self::$rf = 'return_format';
+		} else {
+			self::$rf = 'save_format';
+		}
 
 		add_action( 'fl_page_data_add_properties' ,  __CLASS__ . '::add_acf_connector'  );
 
@@ -60,43 +79,51 @@ class easy_acf_connect {
 	 * Admin area notice that flbuilder is not activated
 	 * @return [type] [description]
 	 */
-	function easy_acf_admin_error_need_pro() {
+	function easy_acf_admin_error_need_acf() {
 		$class = 'notice notice-error';
-		$message = __( 'Sorry, in order for Easy ACF to work, you will need ACF Pro .', '{{plugin.textdomain}}' );
+		$message = __( 'Sorry, in order for Easy ACF to work, you will need Advanced Custom Fields.', 'easy-acf-connect' );
 		printf( '<div class="%s is-dismissible"><p>%s</p></div>', esc_attr($class), esc_html($message) );
 	}
 
 
 	public static function add_acf_connector() {
 
-			/**
-			 *  Add a custom group
-			 */
-			FLPageData::add_group( 'easy_acf', array(
-				'label' => __('Easy ACF', '{{plugin.textdomain}}')
-			) );
+		/**
+		 *  Add a custom group
+		 */
+		FLPageData::add_group( 'easy_acf', array(
+			'label' => __('Easy ACF', 'easy-acf-connect')
+		) );
 
 
-			/**
-			 *  Add a new property to our group
-			 */
-			FLPageData::add_post_property( 'easy_acf_connect', array(
-				'label'   => __('Easy ACF', '{{plugin.textdomain}}'),
-				'group'   => 'easy_acf',
-				'type'    => apply_filters( 'easy_acf_select_field_types' , self::$accepted_field_types ),
-				'getter'  => array( __CLASS__ , 'get_easy_acf' ),
-			) );
+		/**
+		 *  Add a new property to our group
+		 */
+		FLPageData::add_post_property( 'easy_acf_connect', array(
+			'label'   => __('Easy ACF', 'easy-acf-connect'),
+			'group'   => 'easy_acf',
+			'type'    => apply_filters( 'easy_acf_select_field_types' , self::$accepted_field_types ),
+			'getter'  => array( __CLASS__ , 'get_easy_acf' ),
+		) );
+
+		$settings_field = self::get_advanced_custom_fields( apply_filters( 'easy_acf_accepted_acf_field_types' , self::$supported_acf_field_types ) );
 
 		FLPageData::add_post_property_settings_fields(
 			'easy_acf_connect',
 			array(
 				'selected_acf_field' 	=> array(
 				    'type'          => 'select',
-				    'label'         => __( 'Select Field', 'textdomain' ),
+				    'label'         => __( 'Select Field', 'easy-acf-connect' ),
 				    'default'       => '',
 				    // filter the fields to only show supported fieldtypes
-				    'options'       => self::get_advanced_custom_fields( apply_filters( 'easy_acf_accepted_acf_field_types' , self::$supported_acf_field_types ) ),
+				    'options'       => $settings_field['options'],
+				    'toggle'		=> $settings_field['toggle'],
 				    'multi-select'	=> false,
+				),
+				'image_size' => array(
+				    'type'          => 'photo-sizes',
+				    'label'         => __('Photo Size', 'easy-acf-connect'),
+				    'default'       => 'medium',
 				),
 			)
 		);
@@ -118,12 +145,17 @@ class easy_acf_connect {
 			 * field type image
 			 */
 			case 'image':
+				/**
+				 * acf version 4 uses $fo['save_format'] to specify the stored format
+				 * acf version 5 uses $fo['return_format'] to specify the stored format
+				 * self::$rf (return_format) is set at ::init()
+				 */
 				// the image is returned as an array per acf-settings
-				if ( is_array($value) && $value['url'] ) {
-					return $value['url'];
+				if ( 'array' == $fo[ self::$rf ] && $value['url'] ) {
+					return $value['sizes'][$settings->image_size];
 				// image is returned as image ID as per acf-settings
-				} else if ( is_integer($value) ) {
-					return wp_get_attachment_image_url( $value );
+				} else if ( 'id' == $fo[ self::$rf] ) {
+					return wp_get_attachment_image_url( $value, $settings->image_size );
 				// image is returned as url
 				} else {
 					return $value;
@@ -137,7 +169,7 @@ class easy_acf_connect {
 				for( $i=0; $i<sizeof($fo['value']);$i++):
 					$return[] = ( $fo['value'][$i]['id'] );
 				endfor;
-				//return ob_get_clean();
+				// return array of ids
 				return $return;
 			break;
 		}
@@ -152,7 +184,7 @@ class easy_acf_connect {
 	 */
 	public static function get_field_groups() {
 
-		if ( class_exists('acf_pro') ) {
+		if ( defined( 'ACF_VERSION') && version_compare( ACF_VERSION , '5.0.0' , '>=' ) ) {
 
 			// version 5
 			return acf_get_field_groups();
@@ -181,7 +213,8 @@ class easy_acf_connect {
     	// return if we don't have field groups yet
     	if (!is_array($groups)) return;
 
-    	if ( class_exists( 'acf_pro' ) ) {
+		if ( defined( 'ACF_VERSION' ) && version_compare( ACF_VERSION , '5.0.0' , '>=' ) ) {
+
 			// acf > v5 version
 			foreach( $groups as $group ) {
 				// get the custom fieds for this group
@@ -196,17 +229,12 @@ class easy_acf_connect {
 
 						if ( !isset( $field['sub_fields'] ) ) $field['sub_fields'] = array();
 
-						// check if $fieldtypes parameter is set, only get fields of this/these type(s);
-						if ( $fieldtypes ) {
+    					// check if $fieldtype parameter is set, only get fields of this/these type(s);
+				        if ( $fieldtypes && !in_array( $field[ 'type' ], $fieldtypes ) ) continue;
 
-							// if it's in the array go ahead and add it
-							if ( in_array( $field[ 'type' ], $fieldtypes ) ) $option[ $field[ 'name' ] ] = $field['name'] . ' (' . $field[ 'label' ] . ')';
+						$option[ $field[ 'name' ] ] = $field['name'] . ' (' . $field[ 'label' ] . ')';
+						$toggle[ $field[ 'name' ] ] = array( 'fields' => (('image' == $field['type'] )?array( 'image_size' ): array()) );
 
-						} else {
-
-							$option[ $field[ 'name' ] ] = $field['name'] . ' (' . $field[ 'label' ] . ')';
-
-						}
 
 					}
 
@@ -228,16 +256,10 @@ class easy_acf_connect {
 						if ( !isset( $field['sub_fields'] ) ) $field['sub_fields'] = array();
 
     					// check if $fieldtype parameter is set, only get fields of this/these type(s);
-				        if ( $fieldtypes ) {
-
-						// if it's in the array go ahead and add it
-						if ( in_array( $field[ 'type' ], $fieldtypes ) ) $option[ $field[ 'name' ] ] = $field['name'] . ' (' . $field[ 'label' ] . ')';
-
-				        } else {
+				        if ( $fieldtypes && !in_array( $field[ 'type' ], $fieldtypes ) ) continue;
 
 						$option[ $field[ 'name' ] ] = $field['name'] . ' (' . $field[ 'label' ] . ')';
-
-				    	}
+						$toggle[ $field[ 'name' ] ] = array( 'fields' => (('image' == $field['type'] )?array( 'image_size' ): array()) );
 
 				    }
 
@@ -246,7 +268,7 @@ class easy_acf_connect {
     		}
     	}
 
-		return $option;
+		return array('options'=> $option, 'toggle'=> $toggle);
 
 	}
 
