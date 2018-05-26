@@ -2,7 +2,10 @@
 # Easy ACF Connect for Themer
 
 Easily connect ACF fields in Beaver Themer. No need to remember the fieldnames, easily select from the dropdown. It returns all fieldnames, across all fieldgroups.
-
+Select the Easy ACF Connector..
+![enter image description here](https://lh3.googleusercontent.com/1Pi-SVAFiXOP77oH82F3AYBN0Q2WbdiL1n48dMeRiMcTHekMJOCHzHP7UMqpX5zkKnJsg9P-UT_V)
+..Then simply select the fieldname.
+![enter image description here](https://lh3.googleusercontent.com/oSHMcEHknUt-Bir3INA6O4JOSmxjC3-2XOjZDc_KoPURfuoZRe_1OrT5i6wDMh_iAyBDEyCWUO2O)
 Currently supports following fieldtypes:
 
  - color-picker
