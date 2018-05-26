@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Easy ACF Connect for Themer
- * Plugin URI: http://www.beaverplugins.com
+ * Plugin URI: https://www.beaverplugins.com
  * Description: Easy ACF Connect for Beaver Themer. Just select the fieldname to connect.
  * Version: 1.0
  * Author: Didou Schol
- * Author URI: http://www.beaverplugins.com
+ * Author URI: https://www.beaverplugins.com
  */
 
 add_action( 'init' , 'easy_acf_connect::init', 99, 1 );
@@ -21,6 +21,30 @@ class easy_acf_connect {
 			'url',
 			'custom_field',
 			'color',
+	);
+
+	public static $supported_acf_field_types = array(
+		'color_picker',
+		'date_picker',
+		'date_time_picker',
+		'email',
+		'file',
+		'gallery',
+		'image',
+		'link',
+		'message',
+		'number',
+		'password',
+		'radio',
+		'range',
+		'select',
+		'text',
+		'textarea',
+		'time_picker',
+		'true_false',
+		'url',
+		'wysiwyg',
+		'field'
 	);
 
 	public static function init() {
@@ -70,7 +94,8 @@ class easy_acf_connect {
 				    'type'          => 'select',
 				    'label'         => __( 'Select Field', 'textdomain' ),
 				    'default'       => '',
-				    'options'       => self::get_advanced_custom_fields(),
+				    // filter the fields to only show supported fieldtypes
+				    'options'       => self::get_advanced_custom_fields( apply_filters( 'easy_acf_accepted_acf_field_types' , self::$supported_acf_field_types ) ),
 				    'multi-select'	=> false,
 				),
 			)
