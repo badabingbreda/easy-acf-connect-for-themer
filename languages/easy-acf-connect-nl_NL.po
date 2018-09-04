@@ -1,37 +1,50 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: Easy ACF Connect for Themer\n"
-"POT-Creation-Date: 2018-05-26 17:33+0200\n"
-"PO-Revision-Date: 2018-05-26 17:52+0200\n"
+"POT-Creation-Date: 2018-09-04 15:56+0200\n"
+"PO-Revision-Date: 2018-09-04 15:58+0200\n"
+"Last-Translator: Didou Schol <didou@badabing.nl>\n"
 "Language-Team: Didou Schol <didou@badabing.nl>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: class-acf-connect.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Last-Translator: Didou Schol <didou@badabing.nl>\n"
-"Language: nl\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class-acf-connect.php:78
-msgid "Sorry, in order for Easy ACF to work, you will need Advanced Custom Fields."
-msgstr "Sorry, als je Easy ACF wilt gebruiken dien je Advanced Custom Fields te hebben."
+#: class-acf-connect.php:96
+msgid ""
+"Sorry, in order for Easy ACF to work, you will need Advanced Custom Fields."
+msgstr ""
+"Sorry, als je Easy ACF wilt gebruiken dien je Advanced Custom Fields "
+"geïnstalleerd en geactiveerd te hebben."
 
-#: class-acf-connect.php:89 class-acf-connect.php:97
+#: class-acf-connect.php:106
+msgid ""
+"Sorry, in orde to use Easy ACF Connect you will need Beaver Theme Builder/"
+"Beaver Themer."
+msgstr ""
+"Sorry, Easy ACF Connect werkt alleen als je ook Beaver Theme Builder/Beaver "
+"Themer geïnstalleerd en geactiveerd hebt."
+
+#: class-acf-connect.php:120 class-acf-connect.php:128
 msgid "Easy ACF"
 msgstr "Easy ACF"
 
-#: class-acf-connect.php:110
+#: class-acf-connect.php:141
 msgid "Select Field"
 msgstr "Selecteer Veld"
 
-#: class-acf-connect.php:119
+#: class-acf-connect.php:150
 msgid "Photo Size"
 msgstr "Foto Afmeting"
 
@@ -40,14 +53,19 @@ msgid "Easy ACF Connect for Themer"
 msgstr "Easy ACF Connect voor Themer"
 
 #. Plugin URI of the plugin/theme
-#. Author URI of the plugin/theme
-msgid "https://www.beaverplugins.com"
+msgid "https://www.badabing.nl"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Easy ACF Connect for Beaver Themer. Just select the fieldname to connect."
-msgstr "Easy ACF Connect voor Beaver Themer. Kies gewoon de veldnaam om te verbinden."
+msgid ""
+"Easy ACF Connect for Beaver Themer. Just select the fieldname to connect."
+msgstr ""
+"Easy ACF Connect voor Beaver Themer. Kies gewoon de veldnaam om te verbinden."
 
 #. Author of the plugin/theme
 msgid "Didou Schol"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.badadbing.nl"
 msgstr ""
