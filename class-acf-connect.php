@@ -71,6 +71,13 @@ class easy_acf_connect {
 		'field'
 	);
 
+	/**
+	 * variable for the fieldnames
+	 * @var array
+	 * @since  1.1.2
+	 */
+	public static $supported_acf_field_types_names = array();
+
 	public static $rf = '';
 
 	/**
@@ -78,6 +85,29 @@ class easy_acf_connect {
 	 * @return void
 	 */
 	public static function init() {
+
+		self::$supported_acf_field_types_names = array(
+		array( 'name' => 'color_picker'			, 'label' => __( 'Color Picker' , 'acf' ) ),
+		array( 'name' => 'date_picker'			, 'label' => __( 'Date Picker' , 'acf' ) ),
+		array( 'name' => 'date_time_picker'		, 'label' => __( 'Date Time Picker' , 'acf' ) ),
+		array( 'name' => 'email'				, 'label' => __( 'Email' , 'acf' ) ),
+		array( 'name' => 'file'					, 'label' => __( 'File Picker' , 'acf' ) ),
+		array( 'name' => 'gallery'				, 'label' => __( 'Gallery' , 'acf' ) ),
+		array( 'name' => 'image'				, 'label' => __( 'Image' , 'acf' ) ),
+		array( 'name' => 'link'					, 'label' => __( 'Link' , 'acf' ) ),
+		array( 'name' => 'message'				, 'label' => __( 'Message' , 'acf' ) ),
+		array( 'name' => 'number'				, 'label' => __( 'Number' , 'acf' ) ),
+		array( 'name' => 'password'				, 'label' => __( 'Password' , 'acf' ) ),
+		array( 'name' => 'radio'				, 'label' => __( 'Radio' , 'acf' ) ),
+		array( 'name' => 'range'				, 'label' => __( 'Range' , 'acf' ) ),
+		array( 'name' => 'select'				, 'label' => __( 'Select' , 'acf' ) ),
+		array( 'name' => 'text'					, 'label' => __( 'Text' , 'acf' ) ),
+		array( 'name' => 'textarea'				, 'label' => __( 'Textarea' , 'acf' ) ),
+		array( 'name' => 'time_picker'			, 'label' => __( 'Time Picker' , 'acf' ) ),
+		array( 'name' => 'true_false'			, 'label' => __( 'True / False' , 'acf' ) ),
+		array( 'name' => 'url'					, 'label' => __( 'Url' , 'acf' ) ),
+		array( 'name' => 'wysiwyg'				, 'label' => __( 'Wysiwyg Editor' , 'acf' ) )
+	);
 
 		// check if Theme Builder / Beaver Themer is installed and actived
 		if ( !class_exists( 'FLThemeBuilder' ) ) {

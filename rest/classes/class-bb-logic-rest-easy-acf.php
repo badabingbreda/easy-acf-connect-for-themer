@@ -30,8 +30,41 @@ final class BB_Logic_REST_Easy_ACF {
 				),
 			)
 		);
+
+		register_rest_route(
+			self::$namespace, '/fieldtypes', array(
+				array(
+					'methods'  => WP_REST_Server::READABLE,
+					'callback' => __CLASS__ . '::fieldtypes',
+				),
+			)
+		);
+
 	}
 
+	/**
+	 * Returns an array of posts with each item
+	 * containing a label and value.
+	 *
+	 * @since  0.1
+	 * @param object $request
+	 * @return array
+	 */
+	static public function fieldtypes( $request ) {
+
+		$response = array();
+
+		foreach ( easy_acf_connect::$supported_acf_field_types_names as $type ) {
+			$response[] = array(
+				'label' => $type['label'],	// pretty name
+				'value' => $type['name'],	// field_type
+			);
+		}
+
+		//$response = array( array( 'label'=> 'veld 1', 'value'=>'veld1' ), array( 'label'=> 'veld 2', 'value'=>'veld2' ) );
+
+		return rest_ensure_response( $response );
+	}
 
 	/**
 	 * Returns an array of posts with each item
@@ -44,12 +77,13 @@ final class BB_Logic_REST_Easy_ACF {
 	static public function fields( $request ) {
 
 		$response = array();
-		$post_type = $request->get_param( 'post_type' );
+		$fieldtype = $request->get_param( 'fieldtype' );
+
 
 
 		// get the fieldnames form the easy_acf_connect class
 		// returned values will be two arrays: 'options' (we will use those) and 'toggle' (which we won't)
-		$easy_fields = easy_acf_connect::get_advanced_custom_fields();
+		$easy_fields = easy_acf_connect::get_advanced_custom_fields( array($fieldtype) );
 
 
 		foreach ( $easy_fields['options'] as $key => $field ) {

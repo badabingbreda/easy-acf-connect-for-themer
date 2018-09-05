@@ -41,6 +41,7 @@ final class BB_Logic_Rules_Easy_ACF {
 			'value' 	=> $value,
 			'operator' 	=> $rule->operator,
 			'compare' 	=> $rule->compare,
+			'end'		=> $rule->end,
 			'isset' 	=> $value,
 		) );
 	}
