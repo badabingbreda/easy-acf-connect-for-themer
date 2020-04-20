@@ -88,15 +88,19 @@ There is currently no support or way to extend for 3rd party fieldtypes using th
 **v1.1.4**
 
 added checkbox fieldtype to Beaver Builder conditional rules, it was missing.
+
 **v1.1.3**
 
 added all remaining fieldtypes (flexible content, group, repeater, page link, post object, relationship, taxonomy, user)
+
 **v1.1.2**
 
 added Conditional Logic settings
+
 **v1.1.1**
 
 added image-size on image fields, tweaked the code, changed way to test for acf 4/5, fixed save_format/return_format for acf 4/5, added textdomain and .pot file
+
 **v1.0.0**
 
 image and gallery field support
