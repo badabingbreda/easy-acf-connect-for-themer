@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy ACF Connect for Themer\n"
-"POT-Creation-Date: 2018-09-04 15:56+0200\n"
-"PO-Revision-Date: 2018-09-04 15:58+0200\n"
+"POT-Creation-Date: 2019-01-24 16:16+0100\n"
+"PO-Revision-Date: 2019-01-24 16:16+0100\n"
 "Last-Translator: Didou Schol <didou@badabing.nl>\n"
 "Language-Team: Didou Schol <didou@badabing.nl>\n"
 "Language: nl\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: class-acf-connect.php\n"
@@ -21,14 +21,130 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class-acf-connect.php:96
+#: classes/class-easy-acf.php:65
+msgid "Color Picker"
+msgstr ""
+
+#: classes/class-easy-acf.php:66
+msgid "Date Picker"
+msgstr ""
+
+#: classes/class-easy-acf.php:67
+msgid "Date Time Picker"
+msgstr ""
+
+#: classes/class-easy-acf.php:68
+msgid "Email"
+msgstr ""
+
+#: classes/class-easy-acf.php:69
+msgid "File Picker"
+msgstr ""
+
+#: classes/class-easy-acf.php:71
+msgid "Flexible Content"
+msgstr ""
+
+#: classes/class-easy-acf.php:73
+msgid "Gallery"
+msgstr ""
+
+#: classes/class-easy-acf.php:74
+msgid "Group"
+msgstr ""
+
+#: classes/class-easy-acf.php:75
+msgid "Image"
+msgstr ""
+
+#: classes/class-easy-acf.php:76
+msgid "Link"
+msgstr ""
+
+#: classes/class-easy-acf.php:77
+msgid "Message"
+msgstr ""
+
+#: classes/class-easy-acf.php:78
+msgid "Number"
+msgstr ""
+
+#: classes/class-easy-acf.php:79
+msgid "Page Link"
+msgstr ""
+
+#: classes/class-easy-acf.php:80
+msgid "Password"
+msgstr ""
+
+#: classes/class-easy-acf.php:81
+msgid "Post Object"
+msgstr ""
+
+#: classes/class-easy-acf.php:82
+msgid "Radio"
+msgstr ""
+
+#: classes/class-easy-acf.php:83
+msgid "Range"
+msgstr ""
+
+#: classes/class-easy-acf.php:84
+msgid "Relationship"
+msgstr ""
+
+#: classes/class-easy-acf.php:86
+msgid "Repeater"
+msgstr ""
+
+#: classes/class-easy-acf.php:87
+msgid "Select"
+msgstr ""
+
+#: classes/class-easy-acf.php:88
+msgid "Checkbox"
+msgstr ""
+
+#: classes/class-easy-acf.php:89
+msgid "Taxonomy"
+msgstr ""
+
+#: classes/class-easy-acf.php:90
+msgid "Text"
+msgstr ""
+
+#: classes/class-easy-acf.php:91
+msgid "Textarea"
+msgstr ""
+
+#: classes/class-easy-acf.php:92
+msgid "Time Picker"
+msgstr ""
+
+#: classes/class-easy-acf.php:93
+msgid "True / False"
+msgstr ""
+
+#: classes/class-easy-acf.php:94
+msgid "Url"
+msgstr ""
+
+#: classes/class-easy-acf.php:95
+msgid "User"
+msgstr ""
+
+#: classes/class-easy-acf.php:96
+msgid "Wysiwyg Editor"
+msgstr ""
+
+#: classes/class-easy-acf.php:129
 msgid ""
 "Sorry, in order for Easy ACF to work, you will need Advanced Custom Fields."
 msgstr ""
 "Sorry, als je Easy ACF wilt gebruiken dien je Advanced Custom Fields "
 "geïnstalleerd en geactiveerd te hebben."
 
-#: class-acf-connect.php:106
+#: classes/class-easy-acf.php:139
 msgid ""
 "Sorry, in orde to use Easy ACF Connect you will need Beaver Theme Builder/"
 "Beaver Themer."
@@ -36,23 +152,109 @@ msgstr ""
 "Sorry, Easy ACF Connect werkt alleen als je ook Beaver Theme Builder/Beaver "
 "Themer geïnstalleerd en geactiveerd hebt."
 
-#: class-acf-connect.php:120 class-acf-connect.php:128
+#: classes/class-easy-acf.php:153 easy-bb-logic.php:51
 msgid "Easy ACF"
 msgstr "Easy ACF"
 
-#: class-acf-connect.php:141
+#: classes/class-easy-acf.php:161
+msgid "Easy ACF field"
+msgstr "Easy ACF Veld"
+
+#: classes/class-easy-acf.php:174
 msgid "Select Field"
 msgstr "Selecteer Veld"
 
-#: class-acf-connect.php:150
+#: classes/class-easy-acf.php:183
 msgid "Photo Size"
 msgstr "Foto Afmeting"
+
+#: classes/class-easy-acf.php:188
+msgid "ACF Object"
+msgstr ""
+
+#: classes/class-easy-acf.php:191
+msgid "Current"
+msgstr "Huidig"
+
+#: classes/class-easy-acf.php:192 classes/class-easy-acf.php:215
+msgid "Post ID"
+msgstr ""
+
+#: classes/class-easy-acf.php:193
+msgid "Option"
+msgstr ""
+
+#: classes/class-easy-acf.php:194 classes/class-easy-acf.php:228
+#: classes/class-easy-acf.php:232
+msgid "User ID"
+msgstr ""
+
+#: classes/class-easy-acf.php:195
+msgid "Taxname Term ID"
+msgstr ""
+
+#: classes/class-easy-acf.php:210
+msgid ""
+"ACF allows you to attach fields to various connected objects. it can attach "
+"to the post-object (Current or post ID), Admin Option Page (option), a user "
+"(User ID) or a Taxonomy Term (Taxname Term ID)."
+msgstr ""
+"Met ACF kun je velden verbinden aan verschillende objecten, Haal waarden op "
+"van het Post Object (huidig of ander Post ID), Admin Option Pagina, een "
+"gebruiker (User ID) of Taxonomy Term (Taxname Term ID)."
+
+#: classes/class-easy-acf.php:219
+msgid "post ID or taxname_termid"
+msgstr "Post ID of taxname_termid"
+
+#: classes/class-easy-acf.php:220
+msgid ""
+"<div style=\"padding-top:10px;\">For post ID, enter the post ID here. For "
+"'Taxname Term ID' enter the taxonomy and term id, linked by a _  .</div>"
+msgstr ""
+"<div style=\"padding-top: 10px;\">voor post ID, voer de post ID in. Voor "
+"'Taxname term ID' voert u de taxonomienaam en de term id in, gekoppeld door "
+"een _. </div>"
+
+#: classes/class-easy-acf.php:221
+msgid ""
+"<h4>Examples of taxname_termID are:<h4>\n"
+"category_3 ( taxonomy 'category', term ID = 3)<br>\n"
+"event_4 ( custom taxonomy 'event', term ID = 4 )"
+msgstr ""
+"<h4>Voorbeelden van taxname_termID zijn:<h4> category_3 (taxonomie 'Category "
+"', term id = 3) <br> event_4 (aangepaste taxonomie 'event ', term id = 4)"
+
+#: easy-bb-logic.php:52
+msgid "Easy ACF Field"
+msgstr "Easy ACF Veld"
+
+#: easy-bb-logic.php:53
+msgid "Easy ACF Option Field"
+msgstr "Easy ACF Option Veld"
+
+#: easy-bb-logic.php:54
+msgid "Value"
+msgstr "Waarde"
+
+#: easy-bb-logic.php:55
+msgid "Field Name"
+msgstr "Veldnaam"
+
+#: easy-bb-logic.php:56
+msgid "Start Value"
+msgstr "Startwaarde"
+
+#: easy-bb-logic.php:57
+msgid "End Value"
+msgstr "Eindwaarde"
 
 #. Plugin Name of the plugin/theme
 msgid "Easy ACF Connect for Themer"
 msgstr "Easy ACF Connect voor Themer"
 
 #. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
 msgid "https://www.badabing.nl"
 msgstr ""
 
@@ -64,8 +266,4 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Didou Schol"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "https://www.badadbing.nl"
 msgstr ""

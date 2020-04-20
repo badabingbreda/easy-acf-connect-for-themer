@@ -61,7 +61,7 @@ final class BB_Logic_REST_Easy_ACF {
 			);
 		}
 
-		//$response = array( array( 'label'=> 'veld 1', 'value'=>'veld1' ), array( 'label'=> 'veld 2', 'value'=>'veld2' ) );
+		//$response = array( array( 'label'=> 'field 1', 'value'=>'field1' ), array( 'label'=> 'field 2', 'value'=>'field2' ) );
 
 		return rest_ensure_response( $response );
 	}
@@ -85,6 +85,7 @@ final class BB_Logic_REST_Easy_ACF {
 		// returned values will be two arrays: 'options' (we will use those) and 'toggle' (which we won't)
 		$easy_fields = easy_acf_connect::get_advanced_custom_fields( array($fieldtype) );
 
+		if ( sizeof( $easy_fields ) == 0 ) return $response[] = array( 'label' => '' , 'value' => '' );
 
 		foreach ( $easy_fields['options'] as $key => $field ) {
 			$response[] = array(
@@ -93,7 +94,7 @@ final class BB_Logic_REST_Easy_ACF {
 			);
 		}
 
-		//$response = array( array( 'label'=> 'veld 1', 'value'=>'veld1' ), array( 'label'=> 'veld 2', 'value'=>'veld2' ) );
+		//$response = array( array( 'label'=> 'field 1', 'value'=>'field1' ), array( 'label'=> 'field 2', 'value'=>'field2' ) );
 
 		return rest_ensure_response( $response );
 	}
