@@ -22,21 +22,12 @@ final class BB_Logic_REST_Easy_ACF {
 	 * @return void
 	 */
 	static public function register_routes() {
-		register_rest_route(
-			self::$namespace, '/fields', array(
-				array(
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => __CLASS__ . '::fields',
-				),
-			)
-		);
 
-		register_rest_route(
-			self::$namespace, '/fieldtypes', array(
-				array(
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => __CLASS__ . '::fieldtypes',
-				),
+
+		BB_Logic_Rules::register(
+			array(
+				'easyacf/fields' => __CLASS__ . '::fields',
+				'easyacf/fieldtypes' => __CLASS__ . '::fieldtypes',
 			)
 		);
 

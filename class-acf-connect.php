@@ -3,14 +3,14 @@
  Plugin Name: Easy ACF Connect for Themer
  Plugin URI: https://www.badabing.nl
  Description: Easy ACF Connect for Beaver Themer. Just select the fieldname to connect.
- Version: 1.1.4
+ Version: 1.1.5
  Author: Didou Schol
  Text Domain: easy-acf-connect
  Domain Path: /languages
  Author URI: https://www.badabing.nl
  */
 
-define( 'EASYACFCONNECT_VERSION' 	, '1.1.4' );
+define( 'EASYACFCONNECT_VERSION' 	, '1.1.5' );
 define( 'EASYACFCONNECT_DIR'			, plugin_dir_path( __FILE__ ) );
 define( 'EASYACFCONNECT_FILE'		, __FILE__ );
 define( 'EASYACFCONNECT_URL' 		, plugins_url( '/', __FILE__ ) );

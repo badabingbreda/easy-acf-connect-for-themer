@@ -85,6 +85,10 @@ There is currently no support or way to extend for 3rd party fieldtypes using th
 
 **version history:**
 
+**v1.1.5**
+
+bugfix: changed the registration of bb-logic-rules to BB function
+
 **v1.1.4**
 
 added checkbox fieldtype to Beaver Builder conditional rules, it was missing.
